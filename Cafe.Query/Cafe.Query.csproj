@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cafe.Contract\Cafe.Contract.csproj" />
+    <ProjectReference Include="..\Cafe.Infra\Cafe.Infra.csproj" />
+  </ItemGroup>
+
+</Project>

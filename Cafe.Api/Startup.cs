@@ -30,6 +30,22 @@ namespace Cafe.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<CafeDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
+            });
+
+
+
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new Info {Title = "APIUSUARIOS", Version="v1"}));
         }
 
@@ -43,6 +59,7 @@ namespace Cafe.Api
             
             //app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseCors("AllowAll");
 
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json","APICafe V1"));

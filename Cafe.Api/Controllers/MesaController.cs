@@ -10,11 +10,13 @@ using Cafe.Api.ViewModel;
 using Cafe.Api.Helper;
 using Cafe.Command.Handler;
 using Cafe.Command.Command;
+using Microsoft.AspNetCore.Cors;
 
 namespace Cafe.Api.Controllers
 {
     [Produces("application/json")]
     [Route("api/Mesa")]
+    [EnableCors("AllowAll")]
     public class MesaController : Controller
     {
 
